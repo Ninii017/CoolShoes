@@ -126,64 +126,86 @@
 
     <div class="card">
       <img src=https://i.pinimg.com/736x/02/ec/54/02ec54a5d2655c2d7d4d4fbd845f1c27.jpg>
-      <p>Tenis Nike - $30</p>
+      <p>Tenis Nike - $30</p><button onclick="agregar('Tenis Nike', 30)">Agregar al carrito</button>
+</div>
     </div>
 
 
     <div class="card">
       <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRUA5PWiyP8YoyK3l2RXYHa382aD1n8MqXGw&s>
       <p>bailarinas Adidas - $37</p>
+      <button onclick="agregar('bailarinas Adidas', 37)">Agregar al carrito</button>
+</div>
     </div>
 
 
     <div class="card">
       <img src=https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/393928/02/mod01/fnd/PNA/fmt/png/Botas-Desierto-v3-Puretex>
       <p>Botas Puma - $39</p>
+      <button onclick="agregar('Botas Puma', 39)">Agregar al carrito</button>
+</div>
     </div>
 
 
     <div class="card">
       <img src=https://cariciastore.com/cdn/shop/collections/ChatGPT_Image_16_mar_2026_04_19_55_p.m._15b7149c-87b0-45c8-8822-778f1f16bd7a.png?v=1773699715>
       <p>zapatos Converse- $40</p>
+      <button onclick="agregar('zapatos converse', 40)">Agregar al carrito</button>
+</div>
     </div>
 
 
     <div class="card">
       <img src=https://i.pinimg.com/236x/64/4d/e5/644de5fdf6fe5efe1b70e3c75d9ca451.jpg>
       <p>Tenis Vans - $41</p>
+      <button onclick="agregar('Tenis Vans', 41)">Agregar al carrito</button>
+</div>
     </div>
 <div class="card">
   <img src=https://i.pinimg.com/474x/b3/59/bc/b359bc3255d8364523355c7aff9b1786.jpg>
   <p>Zapatos Reebok - $28</p>
+  <button onclick="agregar('Zapatos Reebok', 28)">Agregar al carrito</button>
+</div>
 </div>
 
 
 <div class="card">
   <img src=https://images-cdn.ubuy.com.ph/635a584b20e67a0b430b2683-new-balance-550-white-green-ds-new-never.jpg>
   <p>Tenis New Balance - $22</p>
+  <button onclick="agregar('Tenis New Balance', 22)">Agregar al carrito</button>
 </div>
-
-
+</div>
 <div class="card">
   <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlf0A-70EYQzqJmSfPFa_2iuqONOz3W7m-KA&s>
   <p>Sandalias Puma - $37</p>
+  <button onclick="agregar('Sandialas Puma', 37)">Agregar al carrito</button>
+</div>
 </div>
 
 
 <div class="card">
   <img src=https://i.pinimg.com/736x/66/01/12/6601128b4ea07ad252c8cf8e95ed8144.jpg>
   <p>Tacones Zara - $32</p>
+  <button onclick="agregar('Tacones Zara', 32)">Agregar al carrito</button>
+</div>
 </div>
 
 
 <div class="card">
   <img src=https://m.media-amazon.com/images/I/61ciekgXXIL._AC_UF894,1000_QL80_.jpg>
   <p>Tenis Adidas Run - $15</p>
+ <button onclick="agregar('Tenis Adidas Run', 15)">Agregar al carrito</button>
 </div>
   </div>
 </section>
-
-
+  
+  <!-- 🛒 CARRITO -->
+<section>
+  <h2>🛒 Carrito</h2>
+  <ul id="carrito"></ul>
+  <p>Total: $<span id="total">0</span></p>
+</section>
+  
 <!-- CONTACTO -->
 <section id="contacto">
   <h2>Contacto</h2>
@@ -196,7 +218,32 @@
 <footer>
   <p>© 2026 CoolShoes</p>
 </footer>
+  
+<script>
+let carrito = [];
+let total = 0;
 
+function agregar(nombre, precio){
+  carrito.push({nombre, precio});
+  total += precio;
+  mostrarCarrito();
+}
+
+function mostrarCarrito(){
+  let lista = document.getElementById("carrito");
+  let totalTexto = document.getElementById("total");
+
+  lista.innerHTML = "";
+
+  carrito.forEach(producto => {
+    let item = document.createElement("li");
+    item.textContent = producto.nombre + " - $" + producto.precio;
+    lista.appendChild(item);
+  });
+
+  totalTexto.textContent = total;
+}
+</script>
 
 </body>
 </html>
